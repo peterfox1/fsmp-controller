@@ -679,7 +679,7 @@
 					"title" : "Range",
 					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_RANGE_DEC" }],
 					"macro+" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_RANGE_INC" }],
-					"title:s" : "PFD",
+					"title:s" : "<-PFD",
 					"macro-:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_RANGE_DEC" }],
 					"macro+:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_RANGE_INC" }]
 				},
@@ -761,7 +761,7 @@
 					"macro:s" : [{ "type": "simconnect", "event": "MobiFlight.AS530_PROC_Push" }]
 				},
 				"enc1" : {
-					"title" : "Map",
+					"title" : "Range",
 					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.AS530_RNG_Zoom" }],
 					"macro+" : [{ "type": "simconnect", "event": "MobiFlight.AS530_RNG_Dezoom" }]
 				},
@@ -801,7 +801,7 @@
 					"macro:s" : [{ "type": "simconnect", "event": "MobiFlight.AS430_PROC_Push" }]
 				},
 				"enc1" : {
-					"title" : "Map",
+					"title" : "Range",
 					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.AS430_RNG_Zoom" }],
 					"macro+" : [{ "type": "simconnect", "event": "MobiFlight.AS430_RNG_Dezoom" }]
 				},
