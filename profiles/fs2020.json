@@ -632,10 +632,10 @@
 					"macro:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_PROC_Push" }]
 				},
 				"enc1" : {
-					"title" : "Map",
+					"title" : "Range",
 					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_RANGE_DEC" }],
 					"macro+" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_RANGE_INC" }],
-					"title:s" : "Map->",
+					"title:s" : "MFD->",
 					"macro-:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_RANGE_DEC" }],
 					"macro+:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_RANGE_INC" }]
 				},
@@ -676,10 +676,10 @@
 					"macro:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_PROC_Push" }]
 				},
 				"enc1" : {
-					"title" : "Map",
+					"title" : "Range",
 					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_RANGE_DEC" }],
 					"macro+" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_RANGE_INC" }],
-					"title:s" : "<-Map",
+					"title:s" : "PFD",
 					"macro-:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_RANGE_DEC" }],
 					"macro+:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_RANGE_INC" }]
 				},
@@ -719,6 +719,12 @@
 					"macro:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_PROC_Push" }]
 				},
 				"enc1" : {
+					"title" : "Range",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_JOYSTICK_PUSH" }],
+					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_RANGE_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_RANGE_INC" }]
+				},
+				"enc2" : {
 					"title" : "Pan X",
 					"macro" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_JOYSTICK_PUSH" }],
 					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_JOYSTICK_LEFT", "repeat": 5 }],
@@ -726,12 +732,6 @@
 					"title:s" : "Pan Y",
 					"macro-:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_JOYSTICK_DOWN", "repeat": 5 }],
 					"macro+:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_JOYSTICK_UP", "repeat": 5 }]
-				},
-				"enc2" : {
-					"title" : "Range",
-					"macro" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_JOYSTICK_PUSH" }],
-					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_RANGE_DEC" }],
-					"macro+" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_RANGE_INC" }]
 				}
 			}
 		},
