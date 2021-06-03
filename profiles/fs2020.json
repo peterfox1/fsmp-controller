@@ -12,7 +12,9 @@
 			"inputs" : {
 				"a1" : {
 					"title" : "AP",
-					"macro" : [{ "type": "simconnect", "event": "AP_MASTER" }]
+					"macro" : [{ "type": "simconnect", "event": "AP_MASTER" }],
+					"title:s" : "FD",
+					"macro:s" : [{ "type": "simconnect", "event": "TOGGLE_FLIGHT_DIRECTOR" }]
 				},
 				"a2" : {
 					"title" : "YD",
@@ -57,7 +59,9 @@
 			"inputs" : {
 				"a1" : {
 					"title" : "AP",
-					"macro" : [{ "type": "simconnect", "event": "AP_MASTER" }]
+					"macro" : [{ "type": "simconnect", "event": "AP_MASTER" }],
+					"title:s" : "FD",
+					"macro:s" : [{ "type": "simconnect", "event": "TOGGLE_FLIGHT_DIRECTOR" }]
 				},
 				"a2" : {
 					"title" : "FLC",
@@ -82,10 +86,10 @@
 					"macro" : [{ "type": "simconnect", "event": "HEADING_SLOT_INDEX_SET", "data": 2 }],
 					"macro:s" : [{ "type": "simconnect", "event": "HEADING_SLOT_INDEX_SET", "data": 1 }],
 					"macro_encoder" : { "type": "simconnect", "event": "HEADING_BUG_SET", "mapping": { "min": 0, "max": 359, "wrap": true, "inc": 1, "inc-s": 10 } },
-					"macro-" : [{ "type": "simconnect", "event": "HEADING_BUG_DEC", "repeat": 10 }],
-					"macro+" : [{ "type": "simconnect", "event": "HEADING_BUG_INC", "repeat": 10 }],
-					"macro-:s" : [{ "type": "simconnect", "event": "HEADING_BUG_DEC" }],
-					"macro+:s" : [{ "type": "simconnect", "event": "HEADING_BUG_INC" }]
+					"macro-" : [{ "type": "simconnect", "event": "HEADING_BUG_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "HEADING_BUG_INC" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "HEADING_BUG_DEC", "repeat": 10 }],
+					"macro+:s" : [{ "type": "simconnect", "event": "HEADING_BUG_INC", "repeat": 10 }]
 				},
 				"enc2" : {
 					"title" : "SPD",
@@ -271,17 +275,17 @@
 				},
 				"enc1" : {
 					"title" : "VOR1",
-					"macro-" : [{ "type": "simconnect", "event": "VOR1_OBI_INC", "repeat": 5 }],
-					"macro+" : [{ "type": "simconnect", "event": "VOR1_OBI_DEC", "repeat": 5 }],
-					"macro-:s" : [{ "type": "simconnect", "event": "VOR1_OBI_INC" }],
-					"macro+:s" : [{ "type": "simconnect", "event": "VOR1_OBI_DEC" }]
+					"macro-" : [{ "type": "simconnect", "event": "VOR1_OBI_DEC", "repeat": 5 }],
+					"macro+" : [{ "type": "simconnect", "event": "VOR1_OBI_INC", "repeat": 5 }],
+					"macro-:s" : [{ "type": "simconnect", "event": "VOR1_OBI_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "VOR1_OBI_INC" }]
 				},
 				"enc2" : {
 					"title" : "VOR2",
-					"macro-" : [{ "type": "simconnect", "event": "VOR2_OBI_INC", "repeat": 5 }],
-					"macro+" : [{ "type": "simconnect", "event": "VOR2_OBI_DEC", "repeat": 5 }],
-					"macro-:s" : [{ "type": "simconnect", "event": "VOR2_OBI_INC" }],
-					"macro+:s" : [{ "type": "simconnect", "event": "VOR2_OBI_DEC" }]
+					"macro-" : [{ "type": "simconnect", "event": "VOR2_OBI_DEC", "repeat": 5 }],
+					"macro+" : [{ "type": "simconnect", "event": "VOR2_OBI_INC", "repeat": 5 }],
+					"macro-:s" : [{ "type": "simconnect", "event": "VOR2_OBI_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "VOR2_OBI_INC" }]
 				}
 			}
 		},
