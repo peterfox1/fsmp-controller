@@ -1,0 +1,597 @@
+{
+	"modes" : [
+		{
+			"name" : ["Auto Pilot", "Altitude"],
+			"inputs" : {
+				"a1" : {
+					"title" : "AP",
+					"macro" : [{ "type": "simconnect", "event": "AP_MASTER" }],
+					"title:s" : "FD",
+					"macro:s" : [{ "type": "simconnect", "event": "TOGGLE_FLIGHT_DIRECTOR" }]
+				},
+				"a2" : {
+					"title" : "NAV",
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV1_HOLD" }]
+				},
+				"a3" : {
+					"title" : "APR",
+					"macro" : [{ "type": "simconnect", "event": "AP_APR_HOLD" }]
+				},
+				"b3" : {
+					"title" : "ALT ARM",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.KAS297_ALT_ARM_PUSH" }],
+					"title:s" : "ALT HOLD",
+					"macro:s" : [{ "type": "simconnect", "event": "AP_PANEL_ALTITUDE_HOLD" }]
+				},
+				"b4" : {
+					"title" : "HDG Mode",
+					"macro" : [{ "type": "simconnect", "event": "AP_PANEL_ALTITUDE_HOLD" }]
+				},
+				"enc1" : {
+					"title" : "ALT",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.KAS297_AP_SELECT_ALT_OR_VS" }],
+					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.KAS297_ALT_DEC_1000" }],
+					"macro+" : [{ "type": "simconnect", "event": "MobiFlight.KAS297_ALT_INC_1000" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "MobiFlight.KAS297_ALT_DEC_100" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "MobiFlight.KAS297_ALT_INC_100" }]
+				},
+				"enc2" : {
+					"title" : "VS",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.KAS297_AP_SELECT_ALT_OR_VS" }],
+					"macro-" : [{ "type": "simconnect", "event": "AP_VS_VAR_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "AP_VS_VAR_INC" }],
+					"title:s" : "HDG",
+					"macro-:s" : [{ "type": "simconnect", "event": "HEADING_BUG_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "HEADING_BUG_INC" }]
+				}
+			}
+		},
+		{
+			"name" : ["Auto Pilot", "HDG/SPD"],
+			"inputs" : {
+				"a1" : {
+					"title" : "AP",
+					"macro" : [{ "type": "simconnect", "event": "AP_MASTER" }],
+					"title:s" : "FD",
+					"macro:s" : [{ "type": "simconnect", "event": "TOGGLE_FLIGHT_DIRECTOR" }]
+				},
+				"a2" : {
+					"title" : "FLC",
+					"macro" : [{ "type": "key", "keys": ["ctrl","u"] }]
+				},
+				"a3" : {
+					"title" : "NAV",
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV1_HOLD" }]
+				},
+				"b3" : {
+					"title" : "HDG Mode",
+					"macro" : [{ "type": "simconnect", "event": "AP_HDG_HOLD" }]
+				},
+				"b4" : {
+					"title" : "1/2 BANK",
+					"macro" : [{ "type": "simconnect", "event": "AP_MAX_BANK_DEC" }],
+					"title:s" : "BANK +",
+					"macro:s" : [{ "type": "simconnect", "event": "AP_MAX_BANK_INC" }]
+				},
+				"enc1" : {
+					"title" : "HDG",
+					"macro" : [{ "type": "simconnect", "event": "HEADING_SLOT_INDEX_SET", "data": 2 }],
+					"macro:s" : [{ "type": "simconnect", "event": "HEADING_SLOT_INDEX_SET", "data": 1 }],
+					"macro_encoder" : { "type": "simconnect", "event": "HEADING_BUG_SET", "mapping": { "min": 0, "max": 359, "wrap": true, "inc": 1, "inc-s": 10 } },
+					"macro-" : [{ "type": "simconnect", "event": "HEADING_BUG_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "HEADING_BUG_INC" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "HEADING_BUG_DEC", "repeat": 10 }],
+					"macro+:s" : [{ "type": "simconnect", "event": "HEADING_BUG_INC", "repeat": 10 }]
+				},
+				"enc2" : {
+					"title" : "SPD",
+					"macro" : [{ "type": "simconnect", "event": "SPEED_SLOT_INDEX_SET", "data": 2 }],
+					"macro:s" : [{ "type": "simconnect", "event": "SPEED_SLOT_INDEX_SET", "data": 1 }],
+					"macro-" : [{ "type": "simconnect", "event": "AP_SPD_VAR_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "AP_SPD_VAR_INC" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "AP_SPD_VAR_DEC", "repeat": 10 }],
+					"macro+:s" : [{ "type": "simconnect", "event": "AP_SPD_VAR_INC", "repeat": 10 }]
+				}
+			}
+		},
+		{
+			"name" : ["Radio", "Navigation"],
+			"inputs" : {
+				"a1" : {
+					"title" : "CDI",
+					"macro" : [{ "type": "simconnect", "event": "TOGGLE_GPS_DRIVES_NAV1" }]
+				},
+				"a2" : {
+					"title" : "NAV1",
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 1 }]
+				},
+				"a3" : {
+					"title" : "NAV2",
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 2 }]
+				},
+				"b3" : {
+					"title" : "SPK:NAV1",
+					"macro" : [{ "type": "simconnect", "event": "DME1_TOGGLE" }]
+				},
+				"b4" : {
+					"title" : "SPK:NAV2",
+					"macro" : [{ "type": "simconnect", "event": "DME1_TOGGLE" }]
+				},
+				"enc1" : {
+					"title" : "NAV1",
+					"macro" : [{ "type": "simconnect", "event": "NAV1_RADIO_SWAP" }],
+					"macro-" : [{ "type": "simconnect", "event": "NAV1_RADIO_FRACT_DEC_CARRY" }],
+					"macro+" : [{ "type": "simconnect", "event": "NAV1_RADIO_FRACT_INC_CARRY" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "NAV1_RADIO_WHOLE_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "NAV1_RADIO_WHOLE_INC" }]
+				},
+				"enc2" : {
+					"title" : "NAV2",
+					"macro" : [{ "type": "simconnect", "event": "NAV2_RADIO_SWAP" }],
+					"macro-" : [{ "type": "simconnect", "event": "NAV2_RADIO_FRACT_DEC_CARRY" }],
+					"macro+" : [{ "type": "simconnect", "event": "NAV2_RADIO_FRACT_INC_CARRY" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "NAV2_RADIO_WHOLE_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "NAV2_RADIO_WHOLE_INC" }]
+				}
+			}
+		},
+		{
+			"name" : ["Radio", "Comms"],
+			"inputs" : {
+				"a1" : {
+					"title" : "Comms",
+					"macro" : [{ "type": "simconnect", "event": "ATC" }, { "type": "key", "keys": ["ctrl","i"] }],
+					"title:s" : "'3'",
+					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_3" }]
+				},
+				"a2" : {
+					"title" : "'1'",
+					"macro" : [{ "type": "simconnect", "event": "ATC_MENU_1" }],
+					"title:s" : "'4'",
+					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_4" }]
+				},
+				"a3" : {
+					"title" : "'2'",
+					"macro" : [{ "type": "simconnect", "event": "ATC_MENU_2" }],
+					"title:s" : "'5'",
+					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_5" }]
+				},
+				"b3" : {
+					"title" : "SPK:COM1",
+					"macro" : [{ "type": "simconnect", "event": "COM1_TRANSMIT_SELECT" }],
+					"title:s" : "'6'",
+					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_6" }]
+				},
+				"b4" : {
+					"title" : "SPK:COM2",
+					"macro" : [{ "type": "simconnect", "event": "COM2_TRANSMIT_SELECT" }],
+					"title:s" : "'7'",
+					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_7" }]
+				},
+				"enc1" : {
+					"title" : "COM1",
+					"macro" : [{ "type": "simconnect", "event": "COM_STBY_RADIO_SWAP" }],
+					"macro-" : [{ "type": "simconnect", "event": "COM_RADIO_FRACT_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "COM_RADIO_FRACT_INC" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "COM_RADIO_WHOLE_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "COM_RADIO_WHOLE_INC" }],
+					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_8" }]
+				},
+				"enc2" : {
+					"title" : "COM2",
+					"macro" : [{ "type": "simconnect", "event": "COM2_RADIO_SWAP" }],
+					"macro-" : [{ "type": "simconnect", "event": "COM2_RADIO_FRACT_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "COM2_RADIO_FRACT_INC" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "COM2_RADIO_WHOLE_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "COM2_RADIO_WHOLE_INC" }],
+					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_9" }]
+				}
+			}
+		},
+		{
+			"name" : ["Radio", "Transponder"],
+			"inputs" : {
+				"a1" : {
+					"title" : "1200",
+					"macro" : [{ "type": "simconnect", "event": "XPNDR_SET", "data": 1200, "convert": "bcd" }]
+				},
+				"a2" : {
+					"title" : "7000",
+					"macro" : [{ "type": "simconnect", "event": "XPNDR_SET", "data": 7000, "convert": "bcd" }]
+				},
+				"a3" : {
+					"title" : "7700",
+					"macro" : [{ "type": "simconnect", "event": "XPNDR_SET", "data": 7700, "convert": "bcd" }]
+				},
+				"enc1" : {
+					"title" : "#1,2",
+					"macro-" : [{ "type": "simconnect", "event": "XPNDR_1000_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "XPNDR_1000_INC" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "XPNDR_100_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "XPNDR_100_INC" }]
+				},
+				"enc2" : {
+					"title" : "#3,4",
+					"macro-" : [{ "type": "simconnect", "event": "XPNDR_10_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "XPNDR_10_INC" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "XPNDR_DEC_CARRY" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "XPNDR_INC_CARRY" }]
+				}
+			}
+		},
+		{
+			"name" : ["Radio", "ADF"],
+			"inputs" : {
+				"a1" : {
+					"title" : "ADF",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.adf_AntAdf" }]
+				},
+				"a2" : {
+					"title" : "FRQ",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.adf_frqTransfert" }]
+				},
+				"a3" : {
+					"title" : "BFO",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.adf_bfo" }]
+				},
+				"b3" : {
+					"title" : "FLT/ET",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.adf_FltEt" }]
+				},
+				"b4" : {
+					"title" : "SET/RST",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.adf_SetRst" }]
+				},
+				"enc1" : {
+					"title" : "#1,2",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.adf_frqTransfert" }],
+					"macro-" : [{ "type": "simconnect", "event": "ADF_100_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "ADF_100_INC" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "ADF_10_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "ADF_10_INC" }]
+				},
+				"enc2" : {
+					"title" : "#3,4",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.adf_frqTransfert" }],
+					"macro-" : [{ "type": "simconnect", "event": "ADF_1_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "ADF_1_INC" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "ADF_FRACT_DEC_CARRY" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "ADF_FRACT_INC_CARRY" }]
+				}
+			}
+		},
+		{
+			"name" : ["Instruments", "VOR"],
+			"inputs" : {
+				"a1" : {
+					"title" : "CDI",
+					"macro" : [{ "type": "simconnect", "event": "TOGGLE_GPS_DRIVES_NAV1" }]
+				},
+				"a2" : {
+					"title" : "NAV1",
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 1 }]
+				},
+				"a3" : {
+					"title" : "NAV2",
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 2 }]
+				},
+				"enc1" : {
+					"title" : "VOR1",
+					"macro-" : [{ "type": "simconnect", "event": "VOR1_OBI_DEC", "repeat": 5 }],
+					"macro+" : [{ "type": "simconnect", "event": "VOR1_OBI_INC", "repeat": 5 }],
+					"macro-:s" : [{ "type": "simconnect", "event": "VOR1_OBI_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "VOR1_OBI_INC" }]
+				},
+				"enc2" : {
+					"title" : "VOR2",
+					"macro-" : [{ "type": "simconnect", "event": "VOR2_OBI_DEC", "repeat": 5 }],
+					"macro+" : [{ "type": "simconnect", "event": "VOR2_OBI_INC", "repeat": 5 }],
+					"macro-:s" : [{ "type": "simconnect", "event": "VOR2_OBI_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "VOR2_OBI_INC" }]
+				}
+			}
+		},
+		{
+			"name" : ["Instruments", "ADF"],
+			"inputs" : {
+				"a1" : {
+					"title" : "",
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 1 }]
+				},
+				"a2" : {
+					"title" : "",
+					"macro" : [{ "type": "simconnect", "event": "G1000_PFD_SOFTKEY6" }]
+				},
+				"a3" : {
+					"title" : "",
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 2 }]
+				},
+				"enc1" : {
+					"title" : "CARD",
+					"macro-" : [{ "type": "simconnect", "event": "ADF_CARD_INC", "repeat": 5 }],
+					"macro+" : [{ "type": "simconnect", "event": "ADF_CARD_DEC", "repeat": 5 }],
+					"macro-:s" : [{ "type": "simconnect", "event": "ADF_CARD_INC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "ADF_CARD_DEC" }]
+				},
+				"enc2" : {
+					"title" : ""
+				}
+			}
+		},
+		{
+			"name" : ["Instruments", "Cal."],
+			"inputs" : {
+				"a1" : {
+					"title" : "BARO",
+					"info" : "Sync to sea level pressure, or 29.92 above 18000ft",
+					"macro" : [{ "type": "simconnect", "event": "BAROMETRIC" }]
+				},
+				"a2" : {
+					"title" : "",
+					"macro" : []
+				},
+				"a3" : {
+					"title" : "",
+					"macro" : []
+				},
+				"enc1" : {
+					"title" : "Alt.",
+					"macro" : [{ "type": "simconnect", "event": "BAROMETRIC", "i": "Sync to sea level pressure, or 29.92 above 18000ft" }],
+					"macro-" : [{ "type": "simconnect", "event": "KOHLSMAN_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "KOHLSMAN_INC" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "KOHLSMAN_DEC", "repeat": 5 }],
+					"macro+:s" : [{ "type": "simconnect", "event": "KOHLSMAN_INC", "repeat": 5 }]
+				},
+				"enc2" : {
+					"title" : "(Gyro)",
+					"title:s" : "Gyro",
+					"macro-:s" : [{ "type": "simconnect", "event": "GYRO_DRIFT_DEC" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "GYRO_DRIFT_INC" }]
+				}
+			}
+		},
+		{
+			"name" : ["Systems", "Lights"],
+			"inputs" : {
+				"a1" : {
+					"title" : "ALL",
+					"macro" : [{ "type": "simconnect", "event": "ALL_LIGHTS_TOGGLE" }]
+				},
+				"a2" : {
+				},
+				"a3" : {
+					"title" : "TAXI",
+					"macro" : [{ "type": "simconnect", "event": "TOGGLE_TAXI_LIGHTS" }]
+				},
+				"b3" : {
+					"title" : "LAND",
+					"title:s" : "LAND:OFF",
+					"macro" : [{ "type": "simconnect", "event": "LANDING_LIGHTS_ON" }],
+					"macro:s" : [{ "type": "simconnect", "event": "LANDING_LIGHTS_OFF" }]
+				},
+				"b4" : {
+					"title" : "STROBE",
+					"title:s" : "STROBE:OFF",
+					"macro" : [{ "type": "simconnect", "event": "STROBES_ON" }],
+					"macro:s" : [{ "type": "simconnect", "event": "STROBES_OFF" }]
+				},
+				"enc1" : {
+					"title" : "",
+					"macro" : []
+				},
+				"enc2" : {
+					"title" : "Cabin",
+					"macro" : [{ "type": "simconnect", "event": "TOGGLE_CABIN_LIGHTS" }],
+					"macro-" : [{ "type": "simconnect", "event": "PANEL_LIGHTS_OFF" }],
+					"macro+" : [{ "type": "simconnect", "event": "PANEL_LIGHTS_ON" }]
+				}
+			}
+		},
+		{
+			"name" : ["Systems", "Anti-Ice"],
+			"inputs" : {
+				"a1" : {
+				},
+				"a2" : {
+				},
+				"a3" : {
+				},
+				"b3" : {
+					"title" : "PITOT ON",
+					"macro" : [{ "type": "simconnect", "event": "PITOT_HEAT_ON" }]
+				},
+				"b4" : {
+					"title" : "PITOT OFF",
+					"macro" : [{ "type": "simconnect", "event": "PITOT_HEAT_OFF" }]
+				},
+				"enc1" : {
+				},
+				"enc2" : {
+				}
+			}
+		},
+		{
+			"name" : ["Systems", "Power"],
+			"inputs" : {
+				"a1" : {
+					"title" : "BAT",
+					"macro" : [{ "type": "simconnect", "event": "TOGGLE_MASTER_BATTERY" }]
+				},
+				"a2" : {
+					"title" : "ALTR",
+					"macro" : [{ "type": "simconnect", "event": "TOGGLE_MASTER_ALTERNATOR" }]
+				},
+				"a3" : {
+				},
+				"b3" : {
+					"title" : "AVI ON",
+					"macro" : [{ "type": "simconnect", "event": "AVIONICS_MASTER_SET", "data": 1 }]
+				},
+				"b4" : {
+					"title" : "AVI OFF",
+					"macro" : [{ "type": "simconnect", "event": "AVIONICS_MASTER_SET", "data": 0 }]
+				},
+				"enc1" : {
+					"title" : "MAG",
+					"macro" : [{ "type": "simconnect", "event": "MAGNETO1_START" }],
+					"macro:s" : [{ "type": "simconnect", "event": "MAGNETO1_OFF" }],
+					"macro-" : [{ "type": "simconnect", "event": "MAGNETO1_DECR" }],
+					"macro+" : [{ "type": "simconnect", "event": "MAGNETO1_INCR" }]
+				},
+				"enc2" : {
+				}
+			}
+		},
+		{
+			"name" : ["Systems", "Fuel"],
+			"inputs" : {
+				"a1" : {
+					"title" : "LEFT",
+					"macro" : [{ "type": "simconnect", "event": "FUEL_SELECTOR_LEFT" }]
+				},
+				"a2" : {
+				},
+				"a3" : {
+					"title" : "RIGHT",
+					"macro" : [{ "type": "simconnect", "event": "FUEL_SELECTOR_RIGHT" }]
+				},
+				"b3" : {
+				},
+				"b4" : {
+					"title" : "PUMP",
+					"macro" : [{ "type": "simconnect", "event": "FUEL_PUMP" }]
+				},
+				"enc1" : {
+					"title" : "Mix",
+					"macro" : [{ "type": "simconnect", "event": "MIXTURE_SET", "data": 8192 }],
+					"macro-" : [{ "type": "simconnect", "event": "MIXTURE_DECR" }],
+					"macro+" : [{ "type": "simconnect", "event": "MIXTURE_INCR" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "MIXTURE_DECR", "repeat": 3 }],
+					"macro+:s" : [{ "type": "simconnect", "event": "MIXTURE_INCR", "repeat": 3 }]
+				},
+				"enc2" : {
+					"title" : "Prop",
+					"macro" : [{ "type": "simconnect", "event": "PROP_PITCH_LO" }],
+					"macro-" : [{ "type": "simconnect", "event": "PROP_PITCH_DECR" }],
+					"macro+" : [{ "type": "simconnect", "event": "PROP_PITCH_INCR" }]
+				}
+			}
+		},
+		{
+			"name" : ["Flight Controls", "Spoilers"],
+			"inputs" : {
+				"a1" : {
+				},
+				"a2" : {
+					"title" : "ON",
+					"macro" : [{ "type": "simconnect", "event": "SPOILERS_ON" }]
+				},
+				"a3" : {
+					"title" : "OFF",
+					"macro" : [{ "type": "simconnect", "event": "SPOILERS_OFF" }]
+				},
+				"b3" : {
+					"title" : "Flaps Dn",
+					"macro" : [{ "type": "simconnect", "event": "FLAPS_INCR" }],
+					"title:s" : "Flaps Dn+",
+					"macro:s" : [{ "type": "simconnect", "event": "FLAPS_DOWN" }]
+				},
+				"b4" : {
+					"title" : "Flaps Up",
+					"macro" : [{ "type": "simconnect", "event": "FLAPS_DECR" }],
+					"title:s" : "Flaps Up+",
+					"macro:s" : [{ "type": "simconnect", "event": "FLAPS_UP" }]
+				},
+				"enc1" : {
+				},
+				"enc2" : {
+				}
+			}
+		},
+		{
+			"name" : ["Flight Controls", "Trim / Misc"],
+			"inputs" : {
+				"a1" : {
+					"title" : "",
+					"macro" : [{ "type": "simconnect", "event": "KEY_SPOILERS_ARM_ON" }],
+					"title:" : "",
+					"macro:" : [{ "type": "simconnect", "event": "SPOILERS_ARM_OFF" }]
+				},
+				"a2" : {
+					"title" : "",
+					"macro" : [{ "type": "simconnect", "event": "SPOILERS_ON" }]
+				},
+				"a3" : {
+					"title" : "PARK",
+					"macro" : [{ "type": "simconnect", "event": "PARKING_BRAKES" }]
+				},
+				"b3" : {
+					"title" : "Gear Up",
+					"macro" : [{ "type": "simconnect", "event": "GEAR_UP" }]
+				},
+				"b4" : {
+					"title" : "Gear Dn",
+					"macro" : [{ "type": "simconnect", "event": "GEAR_DOWN" }]
+				},
+				"enc1" : {
+					"title" : "Elev",
+					"macro" : [{ "type": "simconnect", "event": "ELEVATOR_TRIM_SET", "data": 0 }],
+					"macro-" : [{ "type": "simconnect", "event": "ELEV_TRIM_DN" }],
+					"macro+" : [{ "type": "simconnect", "event": "ELEV_TRIM_UP" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "ELEV_TRIM_DN", "repeat": 5 }],
+					"macro+:s" : [{ "type": "simconnect", "event": "ELEV_TRIM_UP", "repeat": 5 }]
+				},
+				"enc2" : {
+					"title" : "Rudder",
+					"macro" : [{ "type": "simconnect", "event": "RUDDER_TRIM_SET", "data": 0 }],
+					"macro-" : [{ "type": "simconnect", "event": "RUDDER_TRIM_LEFT" }],
+					"macro+" : [{ "type": "simconnect", "event": "RUDDER_TRIM_RIGHT" }],
+					"title:s" : "Aileron",
+					"macro:s" : [{ "type": "simconnect", "event": "AILERON_TRIM_SET", "data": 0 }],
+					"macro-:s" : [{ "type": "simconnect", "event": "AILERON_TRIM_LEFT" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "AILERON_TRIM_RIGHT" }]
+				}
+			}
+		},
+		{
+			"name" : ["GNS", "530"],
+			"inputs" : {
+				"a1" : {
+					"title" : "D->",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.AS530_DirectTo_Push" }]
+				},
+				"a2" : {
+					"title" : "FLP",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.AS530_FPL_Push" }]
+				},
+				"a3" : {
+					"title" : "MENU",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.AS530_MENU_Push" }]
+				},
+				"b3" : {
+					"title" : "CLR",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.AS530_CLR_Push" }]
+				},
+				"b4" : {
+					"title" : "ENT",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.AS530_ENT_Push" }],
+					"title:s" : "PROC",
+					"macro:s" : [{ "type": "simconnect", "event": "MobiFlight.AS530_PROC_Push" }]
+				},
+				"enc1" : {
+					"title" : "Range",
+					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.AS530_RNG_Zoom" }],
+					"macro+" : [{ "type": "simconnect", "event": "MobiFlight.AS530_RNG_Dezoom" }]
+				},
+				"enc2" : {
+					"title" : "FMS",
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.AS530_RightSmallKnob_Push" }],
+					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.AS530_RightSmallKnob_Left" }],
+					"macro+" : [{ "type": "simconnect", "event": "MobiFlight.AS530_RightSmallKnob_Right" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "MobiFlight.AS530_RightLargeKnob_Left" }],
+					"macro+:s" : [{ "type": "simconnect", "event": "MobiFlight.AS530_RightLargeKnob_Right" }]
+				}
+			}
+		}
+	]
+}
