@@ -7,7 +7,7 @@
 	},
 	"modes" : [
 		{
-			"name" : ["Auto Pilot", "Altitude"],
+			"name" : ["Autopilot", "Altitude"],
 			"ref" : "autopilot.altitude",
 			"inputs" : {
 				"a1" : {
@@ -55,7 +55,7 @@
 			}
 		},
 		{
-			"name" : ["Auto Pilot", "HDG/SPD"],
+			"name" : ["Autopilot", "HDG/SPD"],
 			"inputs" : {
 				"a1" : {
 					"title" : "AP",
@@ -538,8 +538,8 @@
 				"a1" : {
 					"title" : "ARM",
 					"macro" : [{ "type": "simconnect", "event": "SPOILERS_ARM_ON" }],
-					"title:" : "!ARM",
-					"macro:" : [{ "type": "simconnect", "event": "SPOILERS_ARM_OFF" }]
+					"title:s" : "!ARM",
+					"macro:s" : [{ "type": "simconnect", "event": "SPOILERS_ARM_OFF" }]
 				},
 				"a2" : {
 					"title" : "ON",
@@ -579,14 +579,8 @@
 			"name" : ["Flight Controls", "Trim / Misc"],
 			"inputs" : {
 				"a1" : {
-					"title" : "",
-					"macro" : [{ "type": "simconnect", "event": "KEY_SPOILERS_ARM_ON" }],
-					"title:" : "",
-					"macro:" : [{ "type": "simconnect", "event": "SPOILERS_ARM_OFF" }]
 				},
 				"a2" : {
-					"title" : "",
-					"macro" : [{ "type": "simconnect", "event": "SPOILERS_ON" }]
 				},
 				"a3" : {
 					"title" : "PARK",

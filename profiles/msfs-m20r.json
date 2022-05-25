@@ -1,7 +1,7 @@
 {
 	"modes" : [
 		{
-			"name" : ["Auto Pilot", "Altitude"],
+			"name" : ["Autopilot", "Altitude"],
 			"inputs" : {
 				"a1" : {
 					"title" : "AP",
@@ -47,7 +47,7 @@
 			}
 		},
 		{
-			"name" : ["Auto Pilot", "HDG/SPD"],
+			"name" : ["Autopilot", "HDG/SPD"],
 			"inputs" : {
 				"a1" : {
 					"title" : "AP",
