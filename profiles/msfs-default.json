@@ -13,20 +13,25 @@
 				"a1" : {
 					"title" : "AP",
 					"macro" : [{ "type": "simconnect", "event": "AP_MASTER" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT MASTER,boolean" }] },
 					"title:s" : "FD",
-					"macro:s" : [{ "type": "simconnect", "event": "TOGGLE_FLIGHT_DIRECTOR" }]
+					"macro:s" : [{ "type": "simconnect", "event": "TOGGLE_FLIGHT_DIRECTOR" }],
+					"status:s" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT FLIGHT DIRECTOR ACTIVE,boolean" }] }
 				},
 				"a2" : {
 					"title" : "YD",
-					"macro" : [{ "type": "simconnect", "event": "YAW_DAMPER_TOGGLE" }]
+					"macro" : [{ "type": "simconnect", "event": "YAW_DAMPER_TOGGLE" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT YAW DAMPER,boolean" }] }
 				},
 				"a3" : {
 					"title" : "APR",
-					"macro" : [{ "type": "simconnect", "event": "AP_APR_HOLD" }]
+					"macro" : [{ "type": "simconnect", "event": "AP_APR_HOLD" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT APPROACH HOLD,boolean" }] }
 				},
 				"b3" : {
 					"title" : "Alt Hold",
-					"macro" : [{ "type": "simconnect", "event": "AP_PANEL_ALTITUDE_HOLD" }]
+					"macro" : [{ "type": "simconnect", "event": "AP_PANEL_ALTITUDE_HOLD" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT ALTITUDE LOCK,boolean" }] }
 				},
 				"b4" : {
 					"title" : "VS Mode",
@@ -60,20 +65,24 @@
 				"a1" : {
 					"title" : "AP",
 					"macro" : [{ "type": "simconnect", "event": "AP_MASTER" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT MASTER,boolean" }] },
 					"title:s" : "FD",
-					"macro:s" : [{ "type": "simconnect", "event": "TOGGLE_FLIGHT_DIRECTOR" }]
+					"macro:s" : [{ "type": "simconnect", "event": "TOGGLE_FLIGHT_DIRECTOR" }],
+					"status:s" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT FLIGHT DIRECTOR ACTIVE,boolean" }] }
 				},
 				"a2" : {
 					"title" : "FLC",
-					"macro" : [{ "type": "key", "keys": ["ctrl","u"] }]
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_MFD_FLC_Push" }]
 				},
 				"a3" : {
 					"title" : "NAV",
-					"macro" : [{ "type": "simconnect", "event": "AP_NAV1_HOLD" }]
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV1_HOLD" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT NAV1 LOCK,boolean" }] }
 				},
 				"b3" : {
 					"title" : "HDG Mode",
-					"macro" : [{ "type": "simconnect", "event": "AP_HDG_HOLD" }]
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.C_172_AP_HDG" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT HEADING LOCK,boolean" }] }
 				},
 				"b4" : {
 					"title" : "1/2 BANK",
@@ -83,8 +92,7 @@
 				},
 				"enc1" : {
 					"title" : "HDG",
-					"macro" : [{ "type": "simconnect", "event": "HEADING_SLOT_INDEX_SET", "data": 2 }],
-					"macro:s" : [{ "type": "simconnect", "event": "HEADING_SLOT_INDEX_SET", "data": 1 }],
+					"macro" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_HEADING_SYNC" }],
 					"macro_encoder" : { "type": "simconnect", "event": "HEADING_BUG_SET", "mapping": { "min": 0, "max": 359, "wrap": true, "inc": 1, "inc-s": 10 } },
 					"macro-" : [{ "type": "simconnect", "event": "HEADING_BUG_DEC" }],
 					"macro+" : [{ "type": "simconnect", "event": "HEADING_BUG_INC" }],
@@ -107,15 +115,24 @@
 			"inputs" : {
 				"a1" : {
 					"title" : "CDI",
-					"macro" : [{ "type": "simconnect", "event": "TOGGLE_GPS_DRIVES_NAV1" }]
+					"macro" : [{ "type": "simconnect", "event": "TOGGLE_GPS_DRIVES_NAV1" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "GPS DRIVES NAV1,boolean" }] }
 				},
 				"a2" : {
 					"title" : "NAV1",
-					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 1 }]
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 1 }],
+					"status" : {
+						"variables": [
+							{ "type": "simconnect", "name": "AUTOPILOT NAV SELECTED,number" },
+							{ "type": "simconnect", "name": "GPS DRIVES NAV1,boolean" }
+						],
+						"logic": "a == 1 && b == 0"
+					}
 				},
 				"a3" : {
 					"title" : "NAV2",
-					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 2 }]
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 2 }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT NAV SELECTED,number" }, { "type": "simconnect", "name": "GPS DRIVES NAV1,boolean" }], "logic": "a == 2 && b == 0" }
 				},
 				"b3" : {
 					"title" : "SPK:NAV1",
@@ -273,15 +290,18 @@
 			"inputs" : {
 				"a1" : {
 					"title" : "CDI",
-					"macro" : [{ "type": "simconnect", "event": "TOGGLE_GPS_DRIVES_NAV1" }]
+					"macro" : [{ "type": "simconnect", "event": "TOGGLE_GPS_DRIVES_NAV1" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "GPS DRIVES NAV1,boolean" }] }
 				},
 				"a2" : {
 					"title" : "NAV1",
-					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 1 }]
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 1 }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT NAV SELECTED,number" }, { "type": "simconnect", "name": "GPS DRIVES NAV1,boolean" }], "logic": "a == 1 && b == 0" }
 				},
 				"a3" : {
 					"title" : "NAV2",
-					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 2 }]
+					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 2 }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT NAV SELECTED,number" }, { "type": "simconnect", "name": "GPS DRIVES NAV1,boolean" }], "logic": "a == 2 && b == 0" }
 				},
 				"enc1" : {
 					"title" : "VOR1",
@@ -304,15 +324,15 @@
 			"inputs" : {
 				"a1" : {
 					"title" : "",
-					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 1 }]
+					"macro" : []
 				},
 				"a2" : {
 					"title" : "",
-					"macro" : [{ "type": "simconnect", "event": "G1000_PFD_SOFTKEY6" }]
+					"macro" : []
 				},
 				"a3" : {
 					"title" : "",
-					"macro" : [{ "type": "simconnect", "event": "AP_NAV_SELECT_SET", "data": 2 }]
+					"macro" : []
 				},
 				"enc1" : {
 					"title" : "CARD",
@@ -345,10 +365,10 @@
 				"enc1" : {
 					"title" : "Alt.",
 					"macro" : [{ "type": "simconnect", "event": "BAROMETRIC", "i": "Sync to sea level pressure, or 29.92 above 18000ft" }],
-					"macro-" : [{ "type": "simconnect", "event": "KOHLSMAN_DEC" }],
-					"macro+" : [{ "type": "simconnect", "event": "KOHLSMAN_INC" }],
-					"macro-:s" : [{ "type": "simconnect", "event": "KOHLSMAN_DEC", "repeat": 5 }],
-					"macro+:s" : [{ "type": "simconnect", "event": "KOHLSMAN_INC", "repeat": 5 }]
+					"macro-" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_BARO_DEC" }],
+					"macro+" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_BARO_INC" }],
+					"macro-:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_BARO_DEC", "repeat": 5 }],
+					"macro+:s" : [{ "type": "simconnect", "event": "MobiFlight.AS1000_PFD_BARO_INC", "repeat": 5 }]
 				},
 				"enc2" : {
 					"title" : "(Gyro)",
@@ -362,28 +382,30 @@
 			"name" : ["Systems", "Lights"],
 			"inputs" : {
 				"a1" : {
-					"title" : "ALL",
-					"macro" : [{ "type": "simconnect", "event": "ALL_LIGHTS_TOGGLE" }]
+					"title" : "STROBE",
+					"macro" : [{ "type": "simconnect", "event": "STROBES_TOGGLE" }],
+					"macro:s" : [{ "type": "simconnect", "event": "STROBES_OFF" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "LIGHT STROBE,boolean" }] }
 				},
 				"a2" : {
 					"title" : "TAXI",
-					"macro" : [{ "type": "simconnect", "event": "TOGGLE_TAXI_LIGHTS" }]
+					"macro" : [{ "type": "simconnect", "event": "TOGGLE_TAXI_LIGHTS" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "LIGHT TAXI,boolean" }] }
 				},
 				"a3" : {
-					"title" : "SEAT",
-					"macro" : [{ "type": "simconnect", "event": "CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE" }]
+					"title" : "LAND",
+					"macro" : [{ "type": "simconnect", "event": "LANDING_LIGHTS_TOGGLE" }],
+					"macro:s" : [{ "type": "simconnect", "event": "LANDING_LIGHTS_OFF" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "LIGHT LANDING,boolean" }] }
 				},
 				"b3" : {
-					"title" : "LAND",
-					"title:s" : "LAND:OFF",
-					"macro" : [{ "type": "simconnect", "event": "LANDING_LIGHTS_ON" }],
-					"macro:s" : [{ "type": "simconnect", "event": "LANDING_LIGHTS_OFF" }]
+					"title" : "ALL",
+					"macro" : [{ "type": "simconnect", "event": "ALL_LIGHTS_TOGGLE" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "LIGHT STROBE,boolean" }, { "type": "simconnect", "name": "LIGHT TAXI,boolean" }, { "type": "simconnect", "name": "LIGHT LANDING,boolean" }] }
 				},
 				"b4" : {
-					"title" : "STROBE",
-					"title:s" : "STROBE:OFF",
-					"macro" : [{ "type": "simconnect", "event": "STROBES_ON" }],
-					"macro:s" : [{ "type": "simconnect", "event": "STROBES_OFF" }]
+					"title" : "SEATBELT",
+					"macro" : [{ "type": "simconnect", "event": "CABIN_SEATBELTS_ALERT_SWITCH_TOGGLE" }]
 				},
 				"enc1" : {
 					"title" : "",
@@ -404,7 +426,8 @@
 					"title" : "ON",
 					"title:s" : "OFF",
 					"macro" : [{ "type": "simconnect", "event": "ANTI_ICE_ON" }],
-					"macro:s" : [{ "type": "simconnect", "event": "ANTI_ICE_OFF" }]
+					"macro:s" : [{ "type": "simconnect", "event": "ANTI_ICE_OFF" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "PANEL ANTI ICE SWITCH,boolean" }] }
 				},
 				"a2" : {
 					"title" : "FRAME",
@@ -416,11 +439,13 @@
 				},
 				"b3" : {
 					"title" : "PITOT ON",
-					"macro" : [{ "type": "simconnect", "event": "PITOT_HEAT_ON" }]
+					"macro" : [{ "type": "simconnect", "event": "PITOT_HEAT_ON" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "PITOT HEAT,boolean" }] }
 				},
 				"b4" : {
 					"title" : "PITOT OFF",
-					"macro" : [{ "type": "simconnect", "event": "PITOT_HEAT_OFF" }]
+					"macro" : [{ "type": "simconnect", "event": "PITOT_HEAT_OFF" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "PITOT HEAT,boolean" }], "logic": "a != 1" }
 				},
 				"enc1" : {
 					"title" : "#1,2",
@@ -445,23 +470,27 @@
 			"inputs" : {
 				"a1" : {
 					"title" : "BAT",
-					"macro" : [{ "type": "simconnect", "event": "TOGGLE_MASTER_BATTERY" }]
+					"macro" : [{ "type": "simconnect", "event": "TOGGLE_MASTER_BATTERY" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "ELECTRICAL MASTER BATTERY,boolean" }] }
 				},
 				"a2" : {
 					"title" : "ALTR",
-					"macro" : [{ "type": "simconnect", "event": "TOGGLE_MASTER_ALTERNATOR" }]
+					"macro" : [{ "type": "simconnect", "event": "TOGGLE_MASTER_ALTERNATOR" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "GENERAL ENG MASTER ALTERNATOR,boolean" }] }
 				},
 				"a3" : {
 					"title" : "AV",
 					"macro" : [{ "type": "simconnect", "event": "AVIONICS_MASTER_SET", "data": 1 }],
 					"title:s" : "!AV",
-					"macro:s" : [{ "type": "simconnect", "event": "AVIONICS_MASTER_SET", "data": 0 }]
+					"macro:s" : [{ "type": "simconnect", "event": "AVIONICS_MASTER_SET", "data": 0 }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "AVIONICS MASTER SWITCH,boolean" }] }
 				},
 				"a4" : {
 					"title" : "APU+",
 					"macro" : [{ "type": "simconnect", "event": "APU_STARTER" }],
 					"title:s" : "APUg",
-					"macro:s" : [{ "type": "simconnect", "event": "APU_GENERATOR_SWITCH_TOGGLE" }]
+					"macro:s" : [{ "type": "simconnect", "event": "APU_GENERATOR_SWITCH_TOGGLE" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "APU GENERATOR SWITCH,boolean" }] }
 				},
 				"b3" : {
 					"title" : "RUN #1",
@@ -496,21 +525,25 @@
 			"inputs" : {
 				"a1" : {
 					"title" : "LEFT",
-					"macro" : [{ "type": "simconnect", "event": "FUEL_SELECTOR_LEFT" }]
+					"macro" : [{ "type": "simconnect", "event": "FUEL_SELECTOR_LEFT" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "FUEL TANK SELECTOR:1,number" }], "logic": "a == 2" }
 				},
 				"a2" : {
 					"title" : "ALL",
-					"macro" : [{ "type": "simconnect", "event": "FUEL_SELECTOR_ALL" }]
+					"macro" : [{ "type": "simconnect", "event": "FUEL_SELECTOR_ALL" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "FUEL TANK SELECTOR:1,number" }], "logic": "a == 1" }
 				},
 				"a3" : {
 					"title" : "RIGHT",
-					"macro" : [{ "type": "simconnect", "event": "FUEL_SELECTOR_RIGHT" }]
+					"macro" : [{ "type": "simconnect", "event": "FUEL_SELECTOR_RIGHT" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "FUEL TANK SELECTOR:1,number" }], "logic": "a == 3" }
 				},
 				"b3" : {
 					"title" : "XFEED",
 					"macro" : [{ "type": "simconnect", "event": "CROSS_FEED_OPEN" }],
 					"title:s" : "XFEED:OFF",
-					"macro:s" : [{ "type": "simconnect", "event": "CROSS_FEED_OFF" }]
+					"macro:s" : [{ "type": "simconnect", "event": "CROSS_FEED_OFF" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "FUEL TANK SELECTOR:1,number" }], "logic": "a == 13" }
 				},
 				"b4" : {
 					"title" : "PUMP",
@@ -539,15 +572,18 @@
 					"title" : "ARM",
 					"macro" : [{ "type": "simconnect", "event": "SPOILERS_ARM_ON" }],
 					"title:s" : "!ARM",
-					"macro:s" : [{ "type": "simconnect", "event": "SPOILERS_ARM_OFF" }]
+					"macro:s" : [{ "type": "simconnect", "event": "SPOILERS_ARM_OFF" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "SPOILERS ARMED,boolean" }] }
 				},
 				"a2" : {
 					"title" : "ON",
-					"macro" : [{ "type": "simconnect", "event": "SPOILERS_ON" }]
+					"macro" : [{ "type": "simconnect", "event": "SPOILERS_ON" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "SPOILERS HANDLE POSITION,percent" }], "logic": "a > 1" }
 				},
 				"a3" : {
 					"title" : "OFF",
-					"macro" : [{ "type": "simconnect", "event": "SPOILERS_OFF" }]
+					"macro" : [{ "type": "simconnect", "event": "SPOILERS_OFF" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "SPOILERS HANDLE POSITION,percent" }], "logic": "a == 0" }
 				},
 				"b3" : {
 					"title" : "Flaps Dn",
@@ -584,7 +620,8 @@
 				},
 				"a3" : {
 					"title" : "PARK",
-					"macro" : [{ "type": "simconnect", "event": "PARKING_BRAKES" }]
+					"macro" : [{ "type": "simconnect", "event": "PARKING_BRAKES" }],
+					"status" : { "variables": [{ "type": "simconnect", "name": "BRAKE PARKING INDICATOR,number" }] }
 				},
 				"b3" : {
 					"title" : "Gear Up",
