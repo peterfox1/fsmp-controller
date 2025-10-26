@@ -1,0 +1,7 @@
+// Add your own custom events here (lvar commands - uses the same format as events_mobiflight.txt)
+//... This allows you to add custom events and avoid having to merge them with the events from mobiflight.
+//... These events still require the Mobiflight WASM to be installed on your simulator's community folder.
+//... If you edit these events.txt files, you must reload fsmp_controller to load the changes.
+//... You can access these events in your profile using the "Custom." prefix e.g. Custom.ALT_DEC_1000
+ALT_DEC_1000# (A:AUTOPILOT ALTITUDE LOCK VAR, feet) 1000 - (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up)
+ALT_INC_1000# (A:AUTOPILOT ALTITUDE LOCK VAR, feet) 1000 + (>K:AP_ALT_VAR_SET_ENGLISH) (>H:AP_KNOB_Up)
