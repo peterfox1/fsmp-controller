@@ -43,8 +43,8 @@
 					"title" : "ALT",
 					"macro" : [{ "type": "simconnect", "event": "ALTITUDE_SLOT_INDEX_SET", "data": 2 }],
 					"macro:s" : [{ "type": "simconnect", "event": "ALTITUDE_SLOT_INDEX_SET", "data": 1 }],
-					"macro-" : [{ "type": "simconnect", "event": "AP_ALT_VAR_DEC", "repeat": 10 }],
-					"macro+" : [{ "type": "simconnect", "event": "AP_ALT_VAR_INC", "repeat": 10 }],
+					"macro-" : [{ "type": "simconnect", "event": "Custom.ALT_DEC_1000" }],
+					"macro+" : [{ "type": "simconnect", "event": "Custom.ALT_INC_1000" }],
 					"macro-:s" : [{ "type": "simconnect", "event": "AP_ALT_VAR_DEC" }],
 					"macro+:s" : [{ "type": "simconnect", "event": "AP_ALT_VAR_INC" }]
 				},
@@ -135,15 +135,15 @@
 					"status" : { "variables": [{ "type": "simconnect", "name": "AUTOPILOT NAV SELECTED,number" }, { "type": "simconnect", "name": "GPS DRIVES NAV1,boolean" }], "logic": "a == 2 && b == 0" }
 				},
 				"b3" : {
-					"title" : "SPK:NAV1",
-					"macro" : [{ "type": "simconnect", "event": "DME1_TOGGLE" }]
+					"title" : { "template" : "$0", "variables": [{ "type": "simconnect", "name": "NAV ACTIVE FREQUENCY:1,mhz", "format": "num:2dp" }] },
+					"macro" : [{ "type": "simconnect", "event": "NAV1_RADIO_SWAP" }]
 				},
 				"b4" : {
-					"title" : "SPK:NAV2",
-					"macro" : [{ "type": "simconnect", "event": "DME1_TOGGLE" }]
+					"title" : { "template" : "$0", "variables": [{ "type": "simconnect", "name": "NAV ACTIVE FREQUENCY:2,mhz", "format": "num:2dp" }] },
+					"macro" : [{ "type": "simconnect", "event": "NAV2_RADIO_SWAP" }]
 				},
 				"enc1" : {
-					"title" : "NAV1",
+					"title" : { "template" : "$0", "variables": [{ "type": "simconnect", "name": "NAV STANDBY FREQUENCY:1,mhz", "format": "num:2dp" }] },
 					"macro" : [{ "type": "simconnect", "event": "NAV1_RADIO_SWAP" }],
 					"macro-" : [{ "type": "simconnect", "event": "NAV1_RADIO_FRACT_DEC_CARRY" }],
 					"macro+" : [{ "type": "simconnect", "event": "NAV1_RADIO_FRACT_INC_CARRY" }],
@@ -151,7 +151,7 @@
 					"macro+:s" : [{ "type": "simconnect", "event": "NAV1_RADIO_WHOLE_INC" }]
 				},
 				"enc2" : {
-					"title" : "NAV2",
+					"title" : { "template" : "$0", "variables": [{ "type": "simconnect", "name": "NAV STANDBY FREQUENCY:2,mhz", "format": "num:2dp" }] },
 					"macro" : [{ "type": "simconnect", "event": "NAV2_RADIO_SWAP" }],
 					"macro-" : [{ "type": "simconnect", "event": "NAV2_RADIO_FRACT_DEC_CARRY" }],
 					"macro+" : [{ "type": "simconnect", "event": "NAV2_RADIO_FRACT_INC_CARRY" }],
@@ -182,33 +182,35 @@
 					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_5" }]
 				},
 				"b3" : {
-					"title" : "SPK:COM1",
-					"macro" : [{ "type": "simconnect", "event": "COM1_TRANSMIT_SELECT" }],
+					"title" : { "template" : "$0", "variables": [{ "type": "simconnect", "name": "COM ACTIVE FREQUENCY:1,mhz", "format": "num:3dp" }] },
+					"macro" : [{ "type": "simconnect", "event": "COM_STBY_RADIO_SWAP" }],
 					"title:s" : "'6'",
 					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_6" }]
 				},
 				"b4" : {
-					"title" : "SPK:COM2",
-					"macro" : [{ "type": "simconnect", "event": "COM2_TRANSMIT_SELECT" }],
+					"title" : { "template" : "$0", "variables": [{ "type": "simconnect", "name": "COM ACTIVE FREQUENCY:2,mhz", "format": "num:3dp" }] },
+					"macro" : [{ "type": "simconnect", "event": "COM_STBY_RADIO_SWAP" }],
 					"title:s" : "'7'",
 					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_7" }]
 				},
 				"enc1" : {
-					"title" : "COM1",
+					"title" : { "template" : "$0", "variables": [{ "type": "simconnect", "name": "COM STANDBY FREQUENCY:1,mhz", "format": "num:3dp,strip1" }] },
 					"macro" : [{ "type": "simconnect", "event": "COM_STBY_RADIO_SWAP" }],
 					"macro-" : [{ "type": "simconnect", "event": "COM_RADIO_FRACT_DEC" }],
 					"macro+" : [{ "type": "simconnect", "event": "COM_RADIO_FRACT_INC" }],
 					"macro-:s" : [{ "type": "simconnect", "event": "COM_RADIO_WHOLE_DEC" }],
 					"macro+:s" : [{ "type": "simconnect", "event": "COM_RADIO_WHOLE_INC" }],
+					"title:s" : "'8'",
 					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_8" }]
 				},
 				"enc2" : {
-					"title" : "COM2",
+					"title" : { "template" : "$0", "variables": [{ "type": "simconnect", "name": "COM STANDBY FREQUENCY:2,mhz", "format": "num:3dp,strip1" }] },
 					"macro" : [{ "type": "simconnect", "event": "COM2_RADIO_SWAP" }],
 					"macro-" : [{ "type": "simconnect", "event": "COM2_RADIO_FRACT_DEC" }],
 					"macro+" : [{ "type": "simconnect", "event": "COM2_RADIO_FRACT_INC" }],
 					"macro-:s" : [{ "type": "simconnect", "event": "COM2_RADIO_WHOLE_DEC" }],
 					"macro+:s" : [{ "type": "simconnect", "event": "COM2_RADIO_WHOLE_INC" }],
+					"title:s" : "'9'",
 					"macro:s" : [{ "type": "simconnect", "event": "ATC_MENU_9" }]
 				}
 			}
@@ -227,6 +229,12 @@
 				"a3" : {
 					"title" : "7700",
 					"macro" : [{ "type": "simconnect", "event": "XPNDR_SET", "data": 7700, "convert": "bcd" }]
+				},
+				"b3" : {
+					"title" : { "template" : "$0", "variables": [{ "type": "simconnect", "name": "TRANSPONDER CODE:1,number", "format": "num:pad4,strip2" }] }
+				},
+				"b4" : {
+					"title" : { "template" : "$0", "variables": [{ "type": "simconnect", "name": "TRANSPONDER CODE:1,number", "format": "num:pad4,strip-2" }] }
 				},
 				"enc1" : {
 					"title" : "#1,2",
